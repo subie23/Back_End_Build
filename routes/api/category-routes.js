@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', async(req, res) => {
   try {
     const categoryData = await Category.update(req.body, {
     where: { id: req.params.id }
@@ -65,7 +65,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   try {
-  const categoryData = await Category.delete({
+  const categoryData = await Category.destroy({
     where: {
       id: req.params.id
     },
