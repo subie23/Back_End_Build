@@ -21,7 +21,7 @@ router.get('/:id', async(req, res) => {
     const tagData = await Tag.findByPk(req.params.id, {
       include: [{ model: Product, through: ProductTag }]
     })
-    res.status(200).json(newTagData);
+    res.status(200).json(tagData);
   }
     catch(err) {
       console.log(err);
@@ -34,7 +34,7 @@ router.post('/', async(req, res) => {
     const newTagData = await Tag.create(req.body, {
       tag_name: req.body.tag_name,
     })
-    res.status(200).json(tagData);
+    res.status(200).json(newTagData);
   }
     catch(err) {
       console.log(err);
